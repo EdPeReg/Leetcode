@@ -1,27 +1,30 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
 /*
- * This is a brute force approach, is not recommended because time complexity is O(n^2)
- * We will visit each element of the array.
+ * Better approach to O(n), each lookup takes O(1) time.
+ * But this increase space complecity to O(n) because each element in the vector
+ * can be added to our map.
+ *
  * */
 vector<int> twoSum(vector<int>& nums, int target)
 {
-    vector<int> index;
+    unordered_map<int, int> u_map;
     for(int i = 0; i < nums.size(); ++i)
     {
-        for(int j = i+1; j < nums.size(); ++j)
-        {
-            if((nums[i] + nums[j]) == target) {
-                index.push_back(i);
-                index.push_back(j);
-            }
-        }
-    }
+        // Obtain the number that we want to find.
+        int complement = target - nums[i];
 
-    return index;
+        // We preceed to find the element in our map and check that we don't use the same value.
+        if(u_map.find(complement) != u_map.end() and u_map[complement] != i)
+            return {i, u_map[complement]};
+        u_map[nums[i]] = i;
+    }
+    return {};
 }
 
 int main() {
