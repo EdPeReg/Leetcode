@@ -11,36 +11,22 @@
  *  bcb -> b is repeated
  *   cb -> b is not there, continue the algorithm.
  *
+ * O(n) and space complexity also O(n)
  * */
 
 int lengthOfLongestSubstring(std::string& s) {
-    int max = 0;
+    size_t max = 0;
     std::deque<char> visited;
 
     for(size_t i = 0; i < s.size(); ++i)
     {
-        // Get the position of the element that we want to check if it's already visited.
-        auto pos = std::find(visited.begin(), visited.end(), s[i]);
-
-        // If not visited, insert it.
-        if(pos == visited.end()) {
-            visited.push_back(s[i]);
-        }
-        else
-        {
-            // We insert it again because we will delete the left elements.
-            visited.push_back(s[i]);
-
-            // If there is a repeated char, just pop the characters until the repeated char is not there.
-            while(visited[0] != visited[visited.size() - 1])
-                visited.pop_front();
-            // Pop the repeated char.
+        // Keep poping until we don't have our repeated char.
+        while(std::find(visited.begin(), visited.end(), s[i]) != visited.end())
             visited.pop_front();
-        }
 
-        if(visited.size() > max) {
+        visited.push_back(s[i]);
+        if(visited.size() > max)
             max = visited.size();
-        }
     }
 
     return max;
