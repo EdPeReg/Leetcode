@@ -1,2 +1,3 @@
 Algorithm explained: https://www.youtube.com/watch?v=UflHuQj6MVA
 Slow algorithm: https://en.wikipedia.org/wiki/Longest_palindromic_substring#:~:text=In%20computer%20science%2C%20the%20longest,bananas%22%20is%20%22anana%22.
+Errichto algoritm: https://www.youtube.com/watch?v=0CKUjDcUYYA
