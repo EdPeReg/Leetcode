@@ -1,0 +1,1 @@
+Explanation using brute force and optimization: https://www.code-recipe.com/post/container-with-most-water
