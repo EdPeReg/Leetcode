@@ -2,19 +2,19 @@
 #include <vector>
 
 int maxArea(std::vector<int>& height) {
-    int currentArea = 0, result = 0;
+    int currentArea = 0, maxArea = 0;
     int right = height.size() - 1;
 
     for(int left = 0; left < right;) {
         int distance = right-left;
         currentArea = std::min(height[left], height[right]) * distance;
-        result = std::max(result, currentArea);
+        maxArea = std::max(maxArea, currentArea);
 
-        if(std::max(height[left], height[right]) > height[left]) ++left;
+        if(height[left] < height[right]) ++left;
         else --right;
     }
 
-    return result;
+    return maxArea;
 }
 
 int main() {
