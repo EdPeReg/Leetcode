@@ -3,13 +3,15 @@
 
 int maxArea(std::vector<int>& height) {
     int currentArea = 0, result = 0;
+    int right = height.size() - 1;
 
-    for(size_t i = 0; i < height.size(); ++i) {
-        for(size_t j = i+1; j < height.size(); ++j) {
-            size_t distance = j-i;
-            currentArea = std::min(height[i], height[j]) * distance;
-            result = std::max(result, currentArea);
-        }
+    for(int left = 0; left < right;) {
+        int distance = right-left;
+        currentArea = std::min(height[left], height[right]) * distance;
+        result = std::max(result, currentArea);
+
+        if(std::max(height[left], height[right]) > height[left]) ++left;
+        else --right;
     }
 
     return result;
