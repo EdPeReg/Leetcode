@@ -1,30 +1,33 @@
 #include <iostream>
 #include <algorithm>
-#include <map>
 #include <vector>
 
-/* O(n^3) Time limit exceeded. */
+/* O(n^2) */
 std::vector< std::vector<int> > threeSum(std::vector<int>& nums) {
     std::vector< std::vector<int> > triplets;
-    std::map< std::vector<int>, int > map;
+    
+    std::sort(nums.begin(), nums.end());
+    for(size_t index1 = 0; index1 < nums.size(); ++index1) {
+        // Avoid duplicated elements from the left.
+        if(index1 > 0 and nums[index1] == nums[index1-1])
+            continue;
 
-    for(size_t i = 0; i < nums.size(); ++i) {
-        for(size_t j = i+1; j < nums.size(); ++j) {
-            for(size_t k = j+1; k < nums.size(); ++k) {
-                if(nums[i] + nums[j] + nums[k] == 0) {
-                    std::vector<int> triplet {nums[i], nums[j], nums[k]};
+        for(size_t left = index1 + 1, right = nums.size() - 1; right > left;) {
+            int result = nums[index1] + nums[left] + nums[right];
 
-                    // Sort to detect repeated triplets.
-                    std::sort(triplet.begin(), triplet.end());
-                    // Because how the map works, won't addd the repeated triplet.
-                    map[triplet] = 1;
-                }
+            if(result == 0) {
+                triplets.push_back({nums[index1], nums[left], nums[right]});
+                --right;
+
+                // Avoid duplicated elements from the right.
+                while(right > left and nums[right] == nums[right+1]) --right;
             }
+            else if(result > 0)
+                --right;
+            else
+                ++left;
         }
     }
-
-    for(const auto& [key, value] : map)
-        triplets.push_back(key);
 
     return triplets;
 }
