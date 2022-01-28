@@ -1,1 +1,2 @@
 problem: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+problem explanation: https://www.enjoyalgorithms.com/blog/remove-nth-node-from-list-end

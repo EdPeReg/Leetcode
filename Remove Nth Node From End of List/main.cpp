@@ -39,38 +39,33 @@ void freeList(ListNode *head)
     }
 }
 
+/* O(N) */
 ListNode* removeNthFromEnd(ListNode* head, int n) {
-    ListNode* currentNode = head;
-    int counter = 0;
+    ListNode* left = head;
+    ListNode* right = head;
 
-    while(currentNode != nullptr) {
-        currentNode = currentNode->next;
-        ++counter;
-    }
+    // Set the right pointer in its correct position.
+    for(int i = 0; i < n; ++i)
+        right = right->next;
 
-    ListNode* prev = nullptr;
-    currentNode = head;
-    // We can know the exact position by knowing how many
-    // elements are in our list minus n.
-    int pos = counter-n;
-
-    // Delete first position.
-    if(pos == 0) {
-        head = currentNode->next;
-        delete currentNode;
+    // Last element will be deleted (first element).
+    if(right == nullptr) {
+        ListNode* aux = head;
+        head = head->next;
+        delete aux;
         return head;
     }
 
-    while(pos > 0) {
-        prev = currentNode;
-        currentNode = currentNode->next;
-        --pos;
+    // Any other position, move both pointers to keep the gap between them.
+    while(right->next) {
+        left = left->next;
+        right = right->next;
     }
 
-    // In order to delete one node, we need the previous
-    // to point to the next element of the node to be eliminated.
-    prev->next = currentNode->next;
-    delete currentNode;
+    ListNode* aux = left->next;
+    left->next = aux->next;
+    delete aux;
+
     return head;
 }
 
@@ -78,9 +73,9 @@ int main()
 {
     ListNode *list = new ListNode(1);
     insert(list, 2);
-    // insert(list, 3);
-    // insert(list, 4);
-    // insert(list, 5);
+    insert(list, 3);
+    insert(list, 4);
+    insert(list, 5);
 
     list = removeNthFromEnd(list, 1);
     print(list);
