@@ -4,39 +4,30 @@
 // O(n)
 bool isValid(std::string& s) {
     std::stack<char> openBrackets;
-    bool valid;
+    bool valid = true;
 
     for(size_t i = 0; i < s.size(); ++i) {
-        valid = false;
-
         // Push open bracket.
         if(s[i] == '(' or s[i] == '[' or s[i] == '{')
             openBrackets.push(s[i]);
         // We find a close bracket. check if it's the correct one.
-        else if(openBrackets.size() != 0) {
+        else if(!openBrackets.empty()) {
             char bracket = openBrackets.top();
             openBrackets.pop();
 
-            if(bracket == '(' and ++bracket == s[i]) {
-                valid = true;
-                continue;
-            } else {
-                // To match to its closing bracket.
-                bracket += 2;
-                if(bracket == s[i]) {
-                    valid = true;
-                } else {
-                    valid = false;
-                    break;
-                }
-            }
+            // Match to its corresponding close brackets, true = match, false = not match.
+            // Check ascii table about why increment bracket.
+            valid = ++bracket == s[i] or ++bracket == s[i];
         } else {
-            valid = false;
-            break;
+            return false;
         }
+
+        if(!valid)
+            return false;
     }
 
-    return openBrackets.size() != 0 ? false : valid;
+    // If we have some brackets in our stack, then also is not valid.
+    return !openBrackets.empty() ? false : valid;
 }
 
 int main()
