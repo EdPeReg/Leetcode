@@ -1,3 +1,9 @@
+/* NOT PROUD OF THIS, REGIN FROM THE FUTURE, YOU NEED TO IMPROVE YOUR
+ * POINTERS MANAGMENT, THERE ARE POINTERS ERRORS...
+ * FOR LEETCODE DOESN'T MATTER BUT HERE, FIX THEM!!!.
+ *
+ * ALSO NOT PROUD OF MI ORIGINAL SOLUTION...*/
+
 #include <iostream>
 
 struct ListNode {
@@ -12,7 +18,7 @@ void insert(ListNode *head, int val)
 {
     ListNode *currentNode = head;
     // We are assuming that there will be always 1 element at the begining.
-    while(currentNode->next != nullptr)
+    while(currentNode->next)
         currentNode = currentNode->next;
 
     currentNode->next = new ListNode(val);
@@ -20,7 +26,7 @@ void insert(ListNode *head, int val)
 
 void print(ListNode *head)
 {
-    while(head != nullptr)
+    while(head)
     {
         if(head->val != 0)
             std::cout << head->val << ' ';
@@ -31,7 +37,7 @@ void print(ListNode *head)
 void freeList(ListNode *head)
 {
     ListNode *aux = nullptr;
-    while(head != nullptr)
+    while(head)
     {
         aux = head;
         head = head->next;
@@ -70,49 +76,73 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
 }
 
 ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    ListNode* currentNode = list1;
+    // Manage empty list.
+    // like this: [], []
+    // [0], []
+    // [], [0]
+    if(list1 == nullptr and list2 == nullptr)
+        return list1;
+    if(list1 == nullptr)
+        return list2;
+    if(list2 == nullptr)
+        return list1;
 
-    while(currentNode->next != nullptr)
-        currentNode = currentNode->next;
+    // It seems here there are some memory leaks errors... :]
+    ListNode* sorted = new ListNode;
 
-    currentNode->next = list2;
-
-    ListNode* sortedList = nullptr;
-    ListNode* aux = nullptr;
-    ListNode* head = list1;
-    ListNode* currentNode2 = list1;
-    currentNode = list1;
-
-    while(currentNode->next != nullptr) {
-        while(currentNode2->next != nullptr) {
-            if(currentNode->val > currentNode2->val) {
-                ListNode* aux = new ListNode(currentNode2->val);  
-                sortedList = aux;
-            }
-            currentNode2 = currentNode2->next;
-        }
-        currentNode2 = head;
-        currentNode = currentNode->next;
+    // Find the minimum element and insert that element in our sorted list.
+    if(list1->val < list2->val) {
+        insert(sorted, list1->val);
+        list1 = list1->next;
+    } else {
+        insert(sorted, list2->val);
+        list2 = list2->next;
     }
 
-    return list1;
+    // Our first element from sorted is not valid, asign
+    // the next element which has the current value.
+    // And do a backup because we want to return the head of our sorted list.
+    ListNode* head = sorted = sorted->next;
+
+    // Iterate in both list and check their values.
+    while(list1 != nullptr and list2 != nullptr)
+    {
+        if(list1->val < list2->val)
+        {
+            insert(sorted, list1->val);
+            list1 = list1->next;
+        }
+        else
+        {
+            insert(sorted, list2->val);
+            list2 = list2->next;
+        }
+        sorted = sorted->next;
+    }
+
+    // There's the possiblity where one list has less
+    // elements than the other list, if that's the case, just
+    // point to the rest of the list that has more elements.
+    if(list1 == nullptr) {
+        sorted->next = list2;
+    } else {
+        sorted->next = list1;
+    }
+
+    return head;
 }
 
 int main()
 {
-    ListNode *list1 = new ListNode(1);
-    insert(list1, 2);
-    insert(list1, 4);
-
-    ListNode *list2 = new ListNode(1);
-    insert(list2, 3);
-    insert(list2, 4);
+    ListNode *list1 = nullptr;
+    ListNode *list2 = new ListNode(0);
 
     list1 = mergeTwoLists(list1, list2);
     print(list1);
 
     // Only delete this lest because the pointers from list2 are merged with this list.
     freeList(list1);
+    freeList(list2);
 
     return 0;
 }
