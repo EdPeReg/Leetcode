@@ -3,15 +3,14 @@
 #include <vector>
 
 /*
- * Basically we will iterate all the array to find the pivot, so the pivot will be the first
- * , then second, then third and so on.
+ * We can use a little math formula to obtain the right sum, without using another for loop.
  *
- * When we are iterating the array, we can at the same time get the sum of all elements that
- * are left to our pivot.
+ * S - nums[i] - sumleft
  *
- * Also we can get the summ of all elements that are right to our pivot using accumulate.
+ * Where S is the total sum of the vector, i is the current index (pivot) and sumleft is the
+ * total sum from all the numbers that are to the left from our pivot.
  *
- * It seems that the complexity is O(N^2) because I think that accumulate complexity is O(N).
+ * Complexity is O(N), we need to iterate to find our correct pivot.
  *
  * Problem: https://leetcode.com/problems/find-pivot-index/
  * */
@@ -21,16 +20,14 @@ using namespace std;
 int pivotIndex(vector<int>& nums)
 {
     int suml = 0;
+    int sum_total = accumulate(nums.begin(), nums.end(), 0);
 
     for (int pivot = 0; pivot < nums.size(); ++pivot)
     {
-        if (pivot != 0)
-            suml += nums[pivot - 1];
-
-        // Indicate out start using our pivot index + 1, the 1 is to not include the current index.
-        int sumr = accumulate(nums.begin() + pivot + 1, nums.end(), 0);
+        int sumr = sum_total - nums[pivot] - suml;
         if (suml == sumr)
             return pivot;
+        suml += nums[pivot];
     }
 
     return -1;
