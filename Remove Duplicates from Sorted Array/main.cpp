@@ -1,20 +1,29 @@
 #include <iostream>
 #include <vector>
 
+/* 
+ * Two pointers, left pointer is used for the unique element,
+ * right pointer is used for the current element.
+ *
+ * Size of the array doesn't change.
+ *
+ * Complexity: O(N)
+ *
+ * Problem: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ * */
+
 using namespace std;
 
 int removeDuplicates(vector<int>& nums) {
-	int i = 1;
-	// Continue erasing the repeating element until we don't find it anymore.
-	while (i < nums.size()) {
-		if (nums[i] == nums[i-1]) {
-			nums.erase(nums.begin()+i);    
-		} else {
-			++i;
-		}  
+	int left = 1;
+
+	for (int right = 1; right < nums.size(); ++right) {
+		if (nums[right] != nums[right-1]) {
+			nums[left++] = nums[right];
+		}
 	}
 
-	return nums.size();
+	return left;
 }
 
 int main()
