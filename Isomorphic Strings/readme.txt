@@ -1,0 +1,2 @@
+- Problem: https://leetcode.com/problems/isomorphic-strings/
+- Explanation: https://www.youtube.com/watch?v=7yF-U1hLEqQ
