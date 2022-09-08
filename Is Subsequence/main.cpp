@@ -15,7 +15,6 @@ using namespace std;
 
 bool isSubsequence(string s, string t) {
     int spos = 0;
-    bool found = false;
 
     for (int i = 0; i < t.size(); i++) {
         if (s[spos] == t[i]) {
@@ -24,12 +23,12 @@ bool isSubsequence(string s, string t) {
     }
 
     // spos will be the same size as s because all s' characters were analized.
-    return spos == s.size() ? true : false;
+    return spos == s.size();
 }
 
 int main() {
 
-    string s = "abc";
+    string s = "axc";
     string t = "ahbgdc";
 
     cout << isSubsequence(s,t);
