@@ -1,1 +1,2 @@
-https://leetcode.com/problems/rotate-array/
+- Problem: https://leetcode.com/problems/rotate-array/
+- Video explanation: https://www.youtube.com/watch?v=gmu0RA5_zxs
