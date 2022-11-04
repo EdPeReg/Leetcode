@@ -1,0 +1,3 @@
+- Possible solutions: https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/127839/longest-substring-without-repeating-characters/
+- Better explanation: https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/1729/11-line-simple-java-solution-o-n-with-explanation/
+- Video using slide arrays: https://www.youtube.com/watch?v=wiGpQwVHdE0
