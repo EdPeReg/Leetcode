@@ -12,27 +12,27 @@ target, if that happens, we need to shrink our window because we want to find
 the minimal length.
 
 When is shrinked we update our left pointer and the current value of that
-shrinked window; we append the window in a buffer to finally get the minimum
-length.
+shrinked window.
+
+Here the len(nums) + 1 is black magic :)
 """
 
 def minSubArrayLen(target: int, nums: list[int]) -> int:
-    buffer = []     # Store the minimal lengths.
-    window_value = 0
+    window_sum = 0
     left = 0
+    result = len(nums) + 1
 
     for right, value in enumerate(nums):
-        window_value += value
+        window_sum += value
 
-        while window_value >= target:
-            # Update our window value.
-            window_value = window_value - nums[left]
+        while window_sum >= target:
+            # Update our window sum.
+            window_sum = window_sum - nums[left]
             # To get window size, we do this little formula.
-            buffer.append(right - left + 1)
-            # Update our left pointer.
+            result = min(result, right - left + 1)
             left += 1
 
-    return min(buffer) if buffer else 0
+    return 0 if result == len(nums) + 1 else result
 
 """
 Input: target = 7, nums = [2,3,1,2,4,3]
