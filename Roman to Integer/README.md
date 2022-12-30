@@ -13,15 +13,15 @@ Because of this, is not necessary to check expliclity if the next number is eith
 
 Like this:
 ```
->if s[i] == "C" and (s[i+1] == "D" or s[i+1] == "M"):
+if s[i] == "C" and (s[i+1] == "D" or s[i+1] == "M"):
 ```
 
 When we iterate in our string, the last roman number is not analized because we don't
 want an overflow, so we only add the last roman number normally
 
 # Complexity
-Complexity is **O(n)** because we need to traverse the entire string
-Space is **O(1)** because there is no N element to add to our map
+- Complexity is **O(n)** because we need to traverse the entire string
+- Space is **O(1)** because there is no N element to add to our map
 
 # References
 
