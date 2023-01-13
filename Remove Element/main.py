@@ -1,37 +1,13 @@
 import sys
 
-"""
-The logic behind this is to iterate in each value, if that value match with the value
-we want to remove, replace that value with an invalid number, in this case -1 because
-it should be in-place.
-
-k represents the total of valid numbers in the list, the list is sorted because
-the valid numbers should be at the beggining of the list, it doesn't matter the
-order.
-
-[3,2,2,3] val = 2
-
-Replace the number to remove with an invalid number
-[3,-1,-1,3] 
-
-Sort the list
-[3,3,-1,-1]
-
-There are two valid numbers at front, return 2 as answer
-
-Time complexity is O(N) where N is the length of the list
-Space complecityy is O(1) because no additional data structure was used
-"""
-
 def removeElement(nums: list[int], val: int) -> int:
-    k = 0
-    for i in range(len(nums)):
-        if nums[i] == val:
-            nums[i] = -1
-        else:
-            k += 1
-    nums.sort(reverse=True)
-    return k
+    slow = 0
+    for num in nums:
+        if num != val:
+            nums[slow] = num
+            slow += 1
+    
+    return slow
 
 def get_string(): return sys.stdin.readline().strip()
 
