@@ -11,28 +11,28 @@ this variable has already the corresponding position.
 
 **Note:** The number that is bold, is the answer.
 
-[1,2,3,4,5,6,7,8], target = 7
-L = 4,6
-R = 7
-m = 3,5,**6**
+[1,2,3,4,5,6,7,8], target = 7 </br>
+L = 4,6 </br>
+R = 7 </br>
+m = 3,5,**6** </br>
 
 ----
-[1,3,5,6], target = 2
-L = 0,**1**
-R = 3,0
-m = 1,0
+[1,3,5,6], target = 2 </br>
+L = 0,**1** </br>
+R = 3,0 </br>
+m = 1,0 </br>
 
 ----
-[1,3,5,6], target = 7
-L = 0,2,3,**4**
-R = 3
-m = 1,2,3
+[1,3,5,6], target = 7 </br>
+L = 0,2,3,**4** </br>
+R = 3 </br>
+m = 1,2,3 </br>
 
 ----
-[2,3,5,6], target = 1
-L = **0**
-R = 3,0,-1
-m = 1,0
+[2,3,5,6], target = 1 </br>
+L = **0** </br>
+R = 3,0,-1 </br>
+m = 1,0 </br>
 
 ---
 # Complexity
