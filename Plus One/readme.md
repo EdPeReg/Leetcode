@@ -11,17 +11,17 @@ The idea is simple, just convert the list of integers into an integer, sum it 1 
 
 # Manually
 
-The idea is to iterate to each number and add it the *carry* if it's necessary, this will tells us when the next number will need to be added or not. For example: </br>
+We only add the number if it's less than 9, for example: </br>
+- [1,2,3] -> 3 should be sum, given [1,2,4] </br>
 
-Here we need to add *9+1 = 10*, so we have a carry of 1, this pass to the left and the right number converts to 0 </br>
-- [9] -> carry = 1 </br>
-- [1,0] -> carry = 0 </br>
+If the number is 9, it means this number should be 0 </br>
+- [1,2,9] -> This 9 should be 0, we have now [1,2,0], now we need to sum 1 to 2 </br>
+- [1,3,0] </br>
 
-Or also this example: </br>
-- [9,9] -> 9+1=10, we set our carry to 1 </br>
-- [9,0] -> We add now the 9 with our carry, 9+1=10, we have again our carry = 1 </br>
-- [0,0] -> Adding 99+1=100, so we need to add our carry to our list at the beggining </br>
-- [1,0,0]
+Also there is the case where all are 9: </br>
+- [9,9,9] -> Because all are 9, they convert to 0 </br>
+- [0,0,0] -> But 999+1 is not 000, should be 1000, we only add 1 at the beggining of the list </br>
+- [1,0,0,0] </br>
 
 # Complexity
 

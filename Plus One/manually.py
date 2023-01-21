@@ -1,26 +1,14 @@
 import sys
 
 def plusOne(digits: list[int]) -> list[int]:
-    # At first we only need to add the last digit
-    digits[-1] += 1
-        
-    carry = 0
-    # Start from the right to the left, only add the carry when is necessary
     for i in range(len(digits)-1,-1,-1):
-        digits[i] += carry
-        # We need to set our carry, we can't have a number like this 10, we need to separate it into [1,0]
-        if digits[i] > 9:
-            digits[i] = 0
-            carry = 1
-        # No need to set ourcarry, and also is not necessary to analize the other numbers
-        else:
-            carry = 0
-            break
+        if digits[i] < 9:
+            digits[i] += 1
+            return digits
+        digits[i] = 0
     
-    # There is the case where a carry exist after checking all the numbers, in this case add the carry at the beggining
-    if carry != 0:
-        digits.insert(0,carry)
-    
+    # This is the only case when we have [9,9,9], we want to have [1,0,0,0]
+    digits.insert(0,1)
     return digits
 
 def get_string(): return sys.stdin.readline().strip()
