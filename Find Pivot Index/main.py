@@ -20,11 +20,22 @@ def pivotIndex(nums: list[int]) -> int:
     
     return index
 
+def leetcode(nums: list[int]) -> int:
+    left, right = 0, sum(nums)
+
+    for index, num in enumerate(nums):
+        right -= num
+        if left == right:
+            return index
+        left += num
+    
+    return -1
+
 if __name__ == '__main__':
     n = int(get_string())
 
     while n:
         strs = list(get_string().split(','))
         strs = list(map(int,strs))
-        print(f'{strs} = {pivotIndex(strs)}')
+        print(f'{strs} = {leetcode(strs)}')
         n -= 1
