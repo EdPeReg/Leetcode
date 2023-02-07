@@ -2,19 +2,6 @@
 #include <numeric>
 #include <vector>
 
-/*
- * We can use a little math formula to obtain the right sum, without using another for loop.
- *
- * S - nums[i] - sumleft
- *
- * Where S is the total sum of the vector, i is the current index (pivot) and sumleft is the
- * total sum from all the numbers that are to the left from our pivot.
- *
- * Complexity is O(N), we need to iterate to find our correct pivot.
- *
- * Problem: https://leetcode.com/problems/find-pivot-index/
- * */
-
 using namespace std;
 
 int pivotIndex(vector<int>& nums)
