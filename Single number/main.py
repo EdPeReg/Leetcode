@@ -14,6 +14,13 @@ def singleNumber(nums: list[int]) -> int:
             return key
     return nums[0]
 
+def xor(nums: list[int]) -> int:
+    res = 0
+
+    for num in nums:
+        res ^= num
+    return res
+
 def get_string(): return sys.stdin.readline().strip()
 
 if __name__ == '__main__':
