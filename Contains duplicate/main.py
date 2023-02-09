@@ -23,6 +23,16 @@ def containsDuplicate(nums: list[int]) -> bool:
     
     return found
 
+def hash_map(nums: list[int]) -> bool:
+    d = {}
+    for num in nums:
+        if num in d:
+            return True
+        # Add this number in our dictionary with a dummy value, we only care about our key
+        d[num] = 1 
+    
+    return False
+
 def get_string(): return sys.stdin.readline().strip()
 
 if __name__ == '__main__':
@@ -30,5 +40,5 @@ if __name__ == '__main__':
 
     while n:
         strs = get_string().split(",")
-        print(containsDuplicate(strs))
+        print(hash_map(strs))
         n -= 1
