@@ -35,3 +35,4 @@ while space complexity is **O(1)** because this algorithm works as in-place </br
 # References
 
 - [Leetcode problem](https://leetcode.com/problems/move-zeroes/description/)
+- [Better and compact solution](https://leetcode.com/problems/move-zeroes/solutions/3236411/283-space-96-33-solution-with-step-by-step-explanation/)
