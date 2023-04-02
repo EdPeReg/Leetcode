@@ -7,7 +7,7 @@ Run **test.py** this contains the test cases for the algorithm, the **rotate.py*
 The main point to consider here is that we need to do it **in-place**, that means we can't create a new 2D matrix and allocate the corresponding values inside. </br>
 The other point to take into consideration is a pattern that you can find in the given result </br>
 
-![Example result](/images/solved.png)
+![Example result](https://github.com/EdPeReg/Leetcode/blob/ec62ab65c4809273d80b25fe63194451a184de4a/Rotate%20Image/images/solved.png)
 
 As you can see in the image, the last row from the original matrix is the first column from the result, the second row from the original matrix is the second column and so on. </br>
 
