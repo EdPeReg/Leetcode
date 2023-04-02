@@ -6,11 +6,11 @@ Run **test.py** this contains the test cases for the algorithm, the **sudoky.py*
 
 - **isValidSudoku**: The idea first is to analize every quadrant in the Sudoku, adding each number that is inside the quadrant in a list and check if the number is repeated, if it is, then return False. I analize the quadrants in order like in the picture </br>
 
-![Sudoku board](/pictures/board_sudoku.png)
+![Sudoku board](https://github.com/EdPeReg/Leetcode/blob/7a0ad76329c89fcd8ff8d8c37b612ba15a46538c/Valid%20Sudoku/pictures/board_sudoku.png)
 
 The ``j = j_pos`` updates where are we going to start to analize the quadrant, for the entire left quadrant we start at position 0, for all the quadrants that are in the middle we start at position 3, and for the entire quadrants in the right we start at position 6 </br>
 
-![It shows where you should start at each quadrant](/pictures/sudoku_board02.png)
+![It shows where you should start at each quadrant](https://github.com/EdPeReg/Leetcode/blob/7a0ad76329c89fcd8ff8d8c37b612ba15a46538c/Valid%20Sudoku/pictures/sudoku_board02.png)
 
 We need to check if we have a valid quadrant, for this it only checks if a number is repeated in the current quadrant </br>
 
