@@ -1,5 +1,7 @@
 #!/usr/bin/env pyhton3
 
+from collections import Counter
+
 def firstUniqChar(s: str) -> int:
     d = {}
 
@@ -10,4 +12,13 @@ def firstUniqChar(s: str) -> int:
         if d[s[i]] == 1:
             return i
 
+    return -1
+
+# FROM CHATGPT
+def firstUniqCharChatGPT(s: str) -> int:
+    d = Counter(s)
+
+    for i, char in enumerate(s):
+        if d[char] == 1:
+            return i
     return -1

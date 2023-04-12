@@ -5,6 +5,7 @@ Run **test.py** this contains the test cases for the algorithm, **unique.py** is
 # Explanation
 
 The idea is to use a dictionary to count how many characters appear in the string, if there is more than one character then that character is not repeated anymore. <br> 
+There is a ChatGPT version, where it follows the same idea but it uses *Counter* to count the occurrences of each chracter. <br>
 
 # Time/Space complexity
 
