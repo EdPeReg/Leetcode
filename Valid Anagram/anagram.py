@@ -2,6 +2,38 @@ def isAnagram(s: str, t: str) -> bool:
     s, t = sorted(s), sorted(t)
     return s == t
 
+def isAnagramHash(s: str, t: str) -> bool:
+    ds, dt = {}, {}
+
+    for char in s:
+        ds[char] = ds.get(char, 0) + 1
+    for char in t:
+        dt[char] = dt.get(char, 0) + 1
+    
+    # The order doesn't matter in a dictionary, as long as all the values are the same
+    return ds == dt
+
+def isAnagramChatGPT(s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        freq_s = {}
+        freq_t = {}
+
+        # Mantener un registro de la frecuencia de los caracteres en ambas cadenas
+        for char in s:
+            freq_s[char] = freq_s.get(char, 0) + 1
+
+        for char in t:
+            freq_t[char] = freq_t.get(char, 0) + 1
+
+        # Comparar los diccionarios de frecuencia para determinar si son anagramas
+        for char in freq_s:
+            if char not in freq_t or freq_s[char] != freq_t[char]:
+                return False
+
+        return True
+
 """
 This function gives time limit because the complexity is N(n^2), this is due because in the worst
 case we are iterating for the entire length for s and t, 
