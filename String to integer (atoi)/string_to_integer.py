@@ -1,3 +1,5 @@
+import re
+
 def myAtoi(s: str) -> int:
     if not s:
         return 0
@@ -22,6 +24,26 @@ def myAtoi(s: str) -> int:
             break
 
     result *= sign
+    return min(max(result, i32_lower), i32_upper)
+
+def myAtoiRegex(s: str) -> int:
+    if not s:
+        return 0
+
+    i32_lower = -(2**31)
+    i32_upper = 2**31 - 1
+    result = 0
+
+    # We want to search numbers that contains either '+' or '-' at the beggining of the string, followed
+    # by one or more numbers
+    # ^[-+]? -> At the beggining of the line '^', we can have one or 0 (?) '+' or '-' ([-+]) 
+    # \d+    -> Followed by one or many numbers
+    match = re.match(r"^[-+]?\d+", s.lstrip())
+
+    # Get the string that match with our pattern
+    if match:
+        s = match.group()
+        result = int(s)
     return min(max(result, i32_lower), i32_upper)
 
 # ChatGPT
