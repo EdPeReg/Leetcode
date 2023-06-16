@@ -10,7 +10,7 @@ Basically is to find a substring in a string, Python has a nice shortcut by usin
 
 The idea is to iterate in the haystack (which is _hello_) and compare each letter to the first letter of needle (_ll_), there will be a point that the letter will match: <br>
 
-`hello` 
+`hello` <br>
 `  ll` 
 
 The first letter of needle match at position position 2 in haystack. <br>
@@ -28,8 +28,6 @@ We are adding `i + len(needle)` because the second argument for slicing starts a
 ## strStr()
 
 I think the complexity is *O(n\*m)* , where **n** is the iteration for the word needle and **m** is the creation of the substring.
-
-Oh yea
 
 # References
 
