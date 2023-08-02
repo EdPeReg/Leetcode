@@ -26,6 +26,22 @@ class ListNode:
 
         return content.replace(" ", ",")
 
+def removeNthFronEndLeetCode(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    left = right = head
+
+    for _ in range(n):
+        right = right.next
+    
+    if not right:
+        return head.next
+
+    while right.next:
+        right = right.next
+        left = left.next
+    
+    left.next = left.next.next
+    return head
+
 # With Optional, indicates that the argument ListNode can be None or not, 
 # also the same with the return
 def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
