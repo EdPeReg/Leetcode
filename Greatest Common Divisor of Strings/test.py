@@ -8,9 +8,9 @@ class TestGCDofStrings(unittest.TestCase):
         self.assertEqual("AB", gcdOfStrings("ABABAB", "ABAB"))
         self.assertEqual("TAUXX", gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"))
         self.assertEqual("ABAB", gcdOfStrings("ABABABAB", "ABAB"))
+        self.assertEqual("", gcdOfStrings("ABABCCABAB", "ABAB"))
     def test_gcd_empty(self):
         self.assertEqual("", gcdOfStrings("LEET", "CODE"))
-        # TODO: Solve this
         """the expected output is correct because even though "ABC"
         is found in str1 and str2, you have "DEF" that is left-over
         in str1 so there is no gcd in this case. there can be no 'leftover'
