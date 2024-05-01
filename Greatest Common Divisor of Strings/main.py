@@ -4,18 +4,13 @@
 - Method 2 to apply GCD: https://www.dcode.fr/gcd
 """
 
+import math
+
 def gcdOfStrings(str1: str, str2: str) -> str:
     """Time complexity is O(n) of this function"""
     len_str1, len_str2 = len(str1), len(str2)
-    b = len(min(str1, str2))
-    gcd = b
+    gcd = math.gcd(len_str1, len_str2)
     gcd_str = ""
-
-    # Applyting Euclidean algorithm to get the len of the string
-    # O(log n)
-    while (r := len_str1 % len_str2):
-        len_str1, len_str2 = len_str2, r
-        gcd = len_str2
 
     # Let's pretend our string is this substring
     gcd_str = str1[:gcd]
